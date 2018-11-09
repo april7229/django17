@@ -19,7 +19,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'your gmail email'
 EMAIL_HOST_PASSWORD = 'your gmail password'
 EMAIL_PORT = '587'
-EMAIL_USE_TLS= True
+EMAIL_USE_TLS = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -44,11 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'profiles',
     'contact',
-    # 'crispy_forms',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    # 'allauth.socailaccount',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -150,7 +149,7 @@ if DEBUG:
 SITE_ID = 1
 
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRCT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
