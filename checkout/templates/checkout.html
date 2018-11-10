@@ -4,10 +4,39 @@
 {% block script %}
 <script type="text/javascript">
   Stripe.setPublishableKey('pk_test_pXEr7cLuhUmICYMaqwRoYSLG');
+  function stripeResponseHandler(status, response){
+      //grab the form
+  var $form = $('#payment-form');
+
+  if (response.error) {
+      $form.find('.payment-errors').text(response.error.message):
+      $form.find('.submit').prop('disabled', false);
+  } else {
+
+    var token = response.id;
+
+      $form.append($('<input type="hidden' name="stripeToken">').val(token));
+
+      $form.get(0).submit();
+   }
+  };
 </script>
 {% endblock %}
 
 {% block jquery %}
+$(function() {
+  var $form = $('#payment-form');
+  $form.submit(function(event) {
+    //Disable the submit button to prevent repeated clicks:
+    $form.find('.submit').prop('disabled', true);
+
+    //Request a token from Stripe:
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    //Prevent the form being submitted:
+    return false;
+    });
+});
 
 {% endblock %}
 
