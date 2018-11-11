@@ -3,13 +3,13 @@
 
 {% block script %}
 <script type="text/javascript">
-  Stripe.setPublishableKey('pk_test_pXEr7cLuhUmICYMaqwRoYSLG');
+  Stripe.setPublishableKey('pk_test_emCOWu5PFRdW3S6Ntz4oOLwk');
   function stripeResponseHandler(status, response){
       //grab the form
   var $form = $('#payment-form');
 
   if (response.error) {
-      $form.find('.payment-errors').text(response.error.message):
+      $form.find('.payment-errors').text(response.error.message);
       $form.find('.submit').prop('disabled', false);
   } else {
 
@@ -41,6 +41,7 @@ $(function() {
 {% endblock %}
 
 {% block content %}
+
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-3'>
 <form class='form' action="" method="POST" id="payment-form">{% csrf_token %}
