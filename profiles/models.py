@@ -45,4 +45,3 @@ def profileCallback(sender, request, user, **kwargs):
 user_logged_in.connect(stripeCallback)
 user_signed_up.connect(stripeCallback)
 user_signed_up.connect(profileCallback)
-
